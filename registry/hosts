@@ -1,0 +1,8 @@
+# host file
+# add to location
+# location C:\Windows\System32\drivers\etc\hosts
+
+127.0.0.1 registry1
+127.0.0.1 registry2
+127.0.0.1 registry3
+127.0.0.1 registry0
