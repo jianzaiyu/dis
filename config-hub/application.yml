@@ -33,6 +33,8 @@ ribbon:
 
 
 management:
+  security:
+    enabled: false
   endpoints:
     web:
       exposure:
