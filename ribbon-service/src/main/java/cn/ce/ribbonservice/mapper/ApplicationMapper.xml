@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ce.ribbonservice.dao.ApplicationDao">
+    <resultMap id="BaseResultMap" type="cn.ce.ribbonservice.entity.Application">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="application_code" jdbcType="VARCHAR" property="applicationCode"/>
+        <result column="application_name" jdbcType="VARCHAR" property="applicationName"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="check_state" jdbcType="TINYINT" property="checkState"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="support_device" jdbcType="INTEGER" property="supportDevice"/>
+        <result column="creator_code" jdbcType="VARCHAR" property="creatorCode"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, application_code, application_name, icon, check_state, description, support_device, creator_code,
+    create_time, update_time
+  </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from application
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from application
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByPrimaryCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from application
+        where application_code = #{applicationCode,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByCreatorCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from application
+        where creator_code = #{creatorCode,jdbcType=VARCHAR}
+        <if test="searchText != null and searchText != ''">
+            and application_name like concat('%',#{searchText,jdbcType=VARCHAR},'%')
+        </if>
+        order by create_time desc
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from application
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="cn.ce.ribbonservice.entity.Application" useGeneratedKeys="true"
+            keyProperty="id">
+    insert into application (application_code, application_name,
+      icon, check_state, description, support_device,
+      creator_code, create_time, update_time
+      )
+    values (#{applicationCode,jdbcType=VARCHAR}, #{applicationName,jdbcType=VARCHAR},
+      #{icon,jdbcType=VARCHAR}, #{checkState,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR},
+      #{supportDevice,jdbcType=INTEGER},#{creatorCode,jdbcType=VARCHAR}, NOW(), #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="cn.ce.ribbonservice.entity.Application" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into application
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="applicationCode != null">
+                application_code,
+            </if>
+            <if test="applicationName != null">
+                application_name,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="checkState != null">
+                check_state,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="supportDevice != null">
+                support_device,
+            </if>
+            <if test="creatorCode != null">
+                creator_code,
+            </if>
+            create_time,
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="applicationCode != null">
+                #{applicationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="applicationName != null">
+                #{applicationName,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="checkState != null">
+                #{checkState,jdbcType=TINYINT},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="supportDevice != null">
+                #{supportDevice,jdbcType=INTEGER},
+            </if>
+            <if test="creatorCode != null">
+                #{creatorCode,jdbcType=VARCHAR},
+            </if>
+            NOW(),
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.ce.ribbonservice.entity.Application">
+        update application
+        <set>
+            <if test="applicationCode != null">
+                application_code = #{applicationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="applicationName != null">
+                application_name = #{applicationName,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="checkState != null">
+                check_state = #{checkState,jdbcType=TINYINT},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="supportDevice != null">
+                support_device = #{supportDevice,jdbcType=INTEGER},
+            </if>
+            <if test="creatorCode != null">
+                creator_code = #{creatorCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            update_time = NOW(),
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.ce.ribbonservice.entity.Application">
+    update application
+    set application_code = #{applicationCode,jdbcType=VARCHAR},
+      application_name = #{applicationName,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      check_state = #{checkState,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      support_device = #{supportDevice,jdbcType=INTEGER},
+      creator_code = #{creatorCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = NOW()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="getApplicationByCondition" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from application
+        <where>
+            1=1
+            <if test="applicationCode!=null and applicationCode!=''">
+                and application_code=#{applicationCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>
