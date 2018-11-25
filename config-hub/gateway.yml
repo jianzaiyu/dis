@@ -13,8 +13,8 @@ zuul:
   routes:
     feign-service:
       path: /feign/**
-    service:
-      path: /service/**
+    ribbon-service:
+      path: /ribbon/**
 #    b-service:
 #      path: /b/**
 #      sensitiveHeaders:
