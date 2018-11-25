@@ -4,7 +4,7 @@ server:
 zuul:
   SendErrorFilter:
     error:
-      disable : false
+      disable : true
   retryable: true  #zuul.routes.<routename>.retryable=true
   ignoredServices: '*'
   host:
