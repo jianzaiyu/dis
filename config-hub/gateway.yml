@@ -2,6 +2,9 @@ server:
   port: 8080
 
 zuul:
+  SendErrorFilter:
+    error:
+      disable : false
   retryable: true  #zuul.routes.<routename>.retryable=true
   ignoredServices: '*'
   host:
