@@ -18,7 +18,6 @@
     <modules>
         <module>registry</module>
         <module>config</module>
-        <module>service</module>
         <module>feign-service</module>
         <module>gateway</module>
         <module>service-support</module>
