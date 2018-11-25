@@ -48,8 +48,8 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("cn.ce"))
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build();
 //                .globalOperationParameters(pars);
