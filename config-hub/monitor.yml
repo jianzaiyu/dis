@@ -1,5 +1,5 @@
 server:
   port: 8002
-management:
-  security:
-    roles: SUPERUSER
+#management:
+#  security:
+#    roles: SUPERUSER
