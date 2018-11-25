@@ -1,6 +1,7 @@
 server:
   port: 8000
 
+
 management:
   endpoints:
     web:
@@ -21,7 +22,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8891/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8001/eureka/
 
 spring:
   cloud:
@@ -31,6 +32,7 @@ spring:
           skipSslValidation: true
           uri: https://github.com/jianzaiyu/dis
           search-paths: config-hub
+
 #  rabbitmq:
 #    host: rabbitmq
 

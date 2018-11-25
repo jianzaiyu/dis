@@ -1,7 +1,7 @@
 package cn.ce.feignservice.controller;
 
-import cn.ce.feignservice.service.app.entity.Application;
-import cn.ce.feignservice.service.app.service.ApplicationService;
+import cn.ce.feignservice.entity.Application;
+import cn.ce.feignservice.service.ApplicationService;
 import cn.ce.servicesupport.exception.BusinessException;
 import cn.ce.servicesupport.pojo.Page;
 import org.springframework.beans.factory.annotation.Autowired;

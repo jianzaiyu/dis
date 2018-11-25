@@ -23,6 +23,7 @@
         <module>gateway</module>
         <module>service-support</module>
         <module>monitor</module>
+        <module>ribbon-service</module>
     </modules>
 
     <properties>
@@ -30,7 +31,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
-        <de.codecentric.version>2.1.1</de.codecentric.version>
+        <de.codecentric.version>2.0.2</de.codecentric.version>
+        <swagger2.version>2.8.0</swagger2.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
     </properties>
 
@@ -90,9 +92,11 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${de.codecentric.version}</version>
         </dependency>
+
     </dependencies>
     <repositories>
         <repository>
