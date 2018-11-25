@@ -1,12 +1,35 @@
 server:
-  port: 8999
+  port: 8000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #加载所有的端点，默认只加载了info、health
+  endpoint:
+    health:
+      show-details: always
+    shutdown:  #可以关闭指定的端点
+      enabled: false
+
+info:
+  head: head
+  body: body
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8891/eureka/
 
 spring:
   cloud:
     config:
       server:
         git:
-          uri: http://git.300.cn/gongshuyang/cloud.git
+          skipSslValidation: true
+          uri: https://github.com/jianzaiyu/dis
           search-paths: config-hub
 #  rabbitmq:
 #    host: rabbitmq

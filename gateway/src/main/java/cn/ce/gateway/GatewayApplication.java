@@ -1,5 +1,6 @@
 package cn.ce.gateway;
 
+import cn.ce.gateway.filter.GatewayErrorFilter;
 import cn.ce.gateway.filter.TokenFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -16,6 +17,11 @@ public class GatewayApplication {
 //    @Bean
 //    public TokenFilter tokenFilter() {
 //        return new TokenFilter();
+//    }
+//
+//    @Bean
+//    public GatewayErrorFilter gatewayErrorFilter() {
+//        return new GatewayErrorFilter();
 //    }
 
     public static void main(String[] args) {

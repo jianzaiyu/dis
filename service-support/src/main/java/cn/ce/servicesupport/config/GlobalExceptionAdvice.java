@@ -1,4 +1,4 @@
-package cn.ce.feignservice.config;
+package cn.ce.servicesupport.config;
 
 
 import cn.ce.servicesupport.exception.BusinessException;
@@ -12,9 +12,10 @@ import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -71,7 +72,7 @@ public class GlobalExceptionAdvice {
         return new Result<>(HttpStatus.OK, ResultCode.SYS0002, new JSONArray(), ex.getMessage());
     }
 
-    @ExceptionHandler({NoHandlerFoundException.class})
+    @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public Result NoHandlerFoundException(HttpServletRequest request,
                                           NoHandlerFoundException ex) {

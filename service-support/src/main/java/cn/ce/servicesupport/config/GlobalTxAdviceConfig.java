@@ -1,4 +1,4 @@
-package cn.ce.feignservice.config;
+package cn.ce.servicesupport.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import org.springframework.aop.Advisor;
