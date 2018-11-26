@@ -3,6 +3,11 @@ spring:
     user:
       name: user
       password: password
+  zipkin:
+    baseUrl: http://zipkin/  #所有的数据提交到此服务之中
+  sleuth:
+    sampler:
+     percentage: 1.0  #定义抽样比率，默认为0.1
 
 eureka:
   instance:

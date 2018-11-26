@@ -1,6 +1,9 @@
 server:
   port: 8002
 
+spring:
+  zipkin:
+    enabled: false
 #spring:
 #  boot:
 #    admin:

@@ -32,6 +32,7 @@
         <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
         <de.codecentric.version>2.0.2</de.codecentric.version>
         <swagger2.version>2.8.0</swagger2.version>
+        <zipkin.version>2.11.8</zipkin.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
     </properties>
 
@@ -95,7 +96,10 @@
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${de.codecentric.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
