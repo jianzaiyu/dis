@@ -4,3 +4,9 @@ server:
 spring:
   zipkin:
     enabled: false
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

@@ -17,8 +17,8 @@ eureka:
       user.password: ${spring.security.user.password}
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@10.12.40.223:8001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@10.12.40.224:8001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@10.12.40.225:8001/eureka/
-      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8001/eureka/
+      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@10.12.40.223:8001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@10.12.40.224:8001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@10.12.40.225:8001/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8001/eureka/
 
 hystrix:
   command:
@@ -48,6 +48,7 @@ management:
       show-details: always
     shutdown:  #可以关闭指定的端点
       enabled: false
+
 
 info:
   head: head
