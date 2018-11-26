@@ -9,16 +9,16 @@ spring:
       name: user
       password: password
   profiles:
-    active: cloud
+    active: native
   cloud:
       config:
         server:
-#          native:
-#            searchLocations: classpath:/config-hub
-          git:
-            skipSslValidation: true
-            uri: https://github.com/jianzaiyu/dis
-            search-paths: config-hub
+          native:
+            searchLocations: classpath:/config-hub
+#          git:
+#            skipSslValidation: true
+#            uri: https://github.com/jianzaiyu/dis
+#            search-paths: config-hub
 
 #  rabbitmq:
 #    host: rabbitmq

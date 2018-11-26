@@ -1,0 +1,58 @@
+server:
+  port: 8003
+
+feign:
+  hystrix:
+    enabled: true
+
+name:
+  "ggs1"
+
+pagehelper:
+  supportMethodsArguments: true
+  pageSizeZero: true
+  reasonable: true
+  helperDialect: mysql
+  params: count=countSql
+mybatis:
+  mapper-locations: classpath:cn/ce/**/mapper/*.xml
+  type-aliases-package: cn.ce.**.entity
+spring:
+  resources:
+      add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  transaction:
+    default-timeout: 60s
+    rollback-on-commit-failure: true
+  datasource:
+      #url: jdbc:mysql://127.0.0.1:3306/pcp?useSSL=false&useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://10.12.40.224:3306/pcp?useSSL=false&useUnicode=true&characterEncoding=utf8
+      username: onlineDB
+      password: bo28jsl29a
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+        minIdle: 5
+        useGlobalDataSourceStat: true
+        validationQuery: SELECT 1 FROM DUAL
+        initialSize: 5
+        maxWait: 60000
+        filters: stat,wall,slf4j
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        testWhileIdle: true
+        testOnBorrow: false
+        minEvictableIdleTimeMillis: 300000
+        timeBetweenEvictionRunsMillis: 60000
+        testOnReturn: false
+        maxActive: 20
+        webStatFilter:
+          enabled: true
+        statViewServlet:
+          enabled: true
+          loginUsername: pcpdbadmin
+          loginPassword: pcpdev1234
+          resetEnable: true
+
