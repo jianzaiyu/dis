@@ -1,3 +1,6 @@
+server:
+  port: 8000
+
 spring:
   application:
     name: config
@@ -5,3 +8,41 @@ spring:
     user:
       name: user
       password: password
+  profiles:
+    active: cloud
+  cloud:
+      config:
+        server:
+#          native:
+#            searchLocations: classpath:/config-hub
+          git:
+            skipSslValidation: true
+            uri: https://github.com/jianzaiyu/dis
+            search-paths: config-hub
+
+#  rabbitmq:
+#    host: rabbitmq
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #加载所有的端点，默认只加载了info、health
+  endpoint:
+    health:
+      show-details: always
+    shutdown:  #可以关闭指定的端点
+      enabled: false
+
+info:
+  head: head
+  body: body
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:8001/eureka/
