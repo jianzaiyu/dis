@@ -25,11 +25,22 @@ spring:
   transaction:
     default-timeout: 60s
     rollback-on-commit-failure: true
+  cache:
+    type: redis
+  redis:
+    host: 10.12.40.170
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 20
+        min-idle: 0
+        max-wait: 10s
+        max-idle: 20
   datasource:
       #url: jdbc:mysql://127.0.0.1:3306/pcp?useSSL=false&useUnicode=true&characterEncoding=utf8
-      url: jdbc:mysql://10.12.40.224:3306/pcp?useSSL=false&useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://10.12.51.210:3306/pcp?useSSL=false&useUnicode=true&characterEncoding=utf8
       username: onlineDB
-      password: bo28jsl29a
+      password: Bo28jsl29a_
       driverClassName: com.mysql.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
       druid:
