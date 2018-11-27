@@ -23,6 +23,7 @@
         <module>service-support</module>
         <module>monitor</module>
         <module>ribbon-service</module>
+        <module>zipkin</module>
     </modules>
 
     <properties>
